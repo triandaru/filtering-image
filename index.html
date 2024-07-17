@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Filtering Image</title>
+  <link rel="stylesheet" type="text/css" href="screen.css">
+  <script type="text/javascript" src="./IplImage.js"></script>
+  <script type="text/javascript" src="./ImageLoader.js"></script>
+  <script type="text/javascript" src="./ImageFiltering.js"></script>
+  <script type="text/javascript" src="./Smoothing.js"></script>
+  <script type="text/javascript" src="./EdgeDetector.js"></script>
+  <script type="text/javascript" src="./Sharpening.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="image-area">
+      <div class="head">
+        <h2>Upload Image</h2>
+      </div>
+      <div class="kata">
+        <p>Gambar yang dipilih nantinya akan muncul dibawah ini.</p>
+      </div>
+      <div class="image">
+        <img src="./no-image.png" id="image"></img>
+      </div>
+      <p>Klik tombol pilih file untuk memilih file dari komputer anda.</p>
+      <div class="tombol">
+        <input type="file" name="files" id="file" style="display: none;">
+        <button id="pilih" class="btn-primary">Pilih file</button>
+      </div>
+
+      <div class="head">
+        <h2>Filtering</h2>
+      </div>
+      <div class="kata">
+        <p>Hasil Gambar</p>
+      </div>
+      <div class="image">
+        <h2 id="teks"></h2>
+        <img src="./no-image.png" id="image" style="display: none">
+        <canvas id="myCanvas" width="433" height="320" style="border:1px solid #000000;">canvas</canvas>
+      </div>
+      <div class="tombol">
+        <h2>Smoothing</h2>
+        <button class="btn-primary" id="mean" name="average" onClick="goAverage()">Mean</button>
+        <button class="btn-primary" id="median" name="gaussian" onClick="goGaussian()">Median</button>
+        <button class="btn-primary" id="modus" name="median" onClick="goMedian()">Modus</button>
+      </div>
+      <div class="tombol">
+        <h2>Sharpening</h2>
+        <button class="btn-primary" id="sharpening4" name="sharpening4" onClick="goSharpening4()">penajaman (4
+          lingkungan)</button>
+        <button class="btn-primary" id="sharpening8" name="sharpening8" onClick="goSharpening8()">penajaman (8
+          lingkungan)</button>
+      </div>
+      <div class="tombol">
+        <h2>Deteksi Tepi</h2>
+        <button class="btn-primary" id="prewitt" name="prewitt" onClick="goPrewitt()">Preewit (horizontal)</button>
+        <button class="btn-primary" id="sobel" name="sobel" onClick="goSobel()">Sobel (Vertikal)</button>
+        <button class="btn-primary" id="laplacian" name="laplacian" onClick="goLaplacian()">Laplacian</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var tm_pilih = document.getElementById('pilih');
+    var file = document.getElementById('file');
+    tm_pilih.addEventListener('click', function () {
+      file.click();
+    })
+    file.addEventListener('change', function () {
+      image(this);
+    })
+    function image(a) {
+      if (a.files && a.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('image').src = e.target.result;
+        }
+        reader.readAsDataURL(a.files[0]);
+      }
+
+    }
+    const tombol = document.getElementById("mean");
+    const tombol1 = document.getElementById("median");
+    const tombol2 = document.getElementById("modus");
+    const tombol3 = document.getElementById("sharpening4");
+    const tombol4 = document.getElementById("sharpening8");
+    const tombol5 = document.getElementById("prewitt");
+    const tombol6 = document.getElementById("sobel");
+    const tombol7 = document.getElementById("laplacian");
+    const teks = document.getElementById("teks");
+
+    tombol.addEventListener("click", function () {
+      teks.innerText = "Mean";
+    });
+    tombol1.addEventListener("click", function () {
+      teks.innerText = "Median";
+    });
+    tombol2.addEventListener("click", function () {
+      teks.innerText = "Modus";
+    });
+    tombol3.addEventListener("click", function () {
+      teks.innerText = "penajaman (4 lingkungan)";
+    });
+    tombol4.addEventListener("click", function () {
+      teks.innerText = "penajaman (8 lingkungan)";
+    });
+    tombol5.addEventListener("click", function () {
+      teks.innerText = "Prewitt";
+    });
+    tombol6.addEventListener("click", function () {
+      teks.innerText = "Sobel";
+    });
+    tombol7.addEventListener("click", function () {
+      teks.innerText = "Laplacian";
+    });
+
+  </script>
+</body>
+
+</html>

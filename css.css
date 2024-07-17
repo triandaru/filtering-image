@@ -1,0 +1,98 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #dedede;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-family: roboto;
+}
+
+.container {
+    width: 50%;
+    overflow: hidden;
+    min-height: 200px;
+    background: white;
+    margin: auto;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.image {
+    min-height: 200px;
+    width: 50%;
+    margin: auto;
+    object-fit: cover;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.image img {
+    width: 100%;
+}
+
+.tombol {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: unset;
+    border-radius: 4px;
+    border: 1px solid #dedede;
+    cursor: pointer;
+}
+
+.btn-success {
+    background: green;
+    color: white;
+}
+
+.btn-danger {
+    background: red;
+    color: white;
+}
+
+.btn-primary {
+    background: blue;
+    color: white;
+}
+
+p {
+    color: grey;
+    font-size: 12px;
+    text-align: center;
+}
+
+.head {
+    background: #baffae;
+    padding: 20px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.head h2 {
+    margin: 0px;
+    font-weight: 300;
+}
+
+.fot {
+    padding: 10px;
+    border-top: 1px solid #c8c8c8;
+    font-size: 12px;
+}
+
+.kata {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.kata p {
+    color: black;
+    font-size: 15px;
+    text-align: left;
+}
